@@ -1,6 +1,7 @@
 import Profile from "../Components/Private/Profile";
 import Blogs from "../Components/Shared/Blogs";
 import Courses from "../Components/Shared/Courses";
+import CoursesCategory from "../Components/Shared/CoursesCategory";
 import Faq from "../Components/Shared/Faq";
 import Login from "../Components/Shared/Login";
 import Register from "../Components/Shared/Register";
@@ -22,7 +23,12 @@ export const routes = createBrowserRouter([
             {
                 path: '/courses',
                 element: <Courses></Courses>,
-                loader: () => fetch('http://localhost:5000/courses')
+              
+            },
+            {
+                path: '/all-courses/:id',
+                element: <CoursesCategory></CoursesCategory>
+              
             },
             {
                 path: '/f-a-q',
