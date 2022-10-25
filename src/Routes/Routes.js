@@ -1,6 +1,8 @@
+import Profile from "../Components/Private/Profile";
 import Blogs from "../Components/Shared/Blogs";
 import Courses from "../Components/Shared/Courses";
 import Faq from "../Components/Shared/Faq";
+import Login from "../Components/Shared/Login";
 import Register from "../Components/Shared/Register";
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -31,6 +33,14 @@ export const routes = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/login',
+                element: <Login></Login>
+            },
+            {
+                path: '/profile',
+                element: <Profile></Profile>
             },
         ]
     }

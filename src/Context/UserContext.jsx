@@ -22,7 +22,7 @@ const UserContext = ({ children }) => {
        return createUserWithEmailAndPassword(auth, email, password)
     }
     const logInUser = (email, password) => {
-        return signInWithEmailAndPassword(email, password)
+        return signInWithEmailAndPassword(auth, email, password)
     }
     const googleLogIn = () => {
         return signInWithPopup(auth, googleProvider)

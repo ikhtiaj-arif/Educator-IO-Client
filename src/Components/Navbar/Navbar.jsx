@@ -51,8 +51,9 @@ const Navbar = () => {
 
       <div className="navbar-end">
         <div>
-        <Link>
-        {
+        <Link to='/profile'>
+         <>
+         {
           user && user.uid ? <>
           <button className="btn btn-outline btn-secondary" onClick={handleLogOut}>Logout</button>
           {user.email} 
@@ -61,6 +62,7 @@ const Navbar = () => {
 
         }
          
+         </>
         </Link>
         </div>
 
