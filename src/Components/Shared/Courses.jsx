@@ -17,7 +17,7 @@ useEffect( ()=>{
 
 
   return (
-    <div className="h-screen w-full lg:w-3/4 md:grid grid-cols-2 mx-auto">
+    <div className="h-screen w-full lg:w-3/4 md:flex mx-auto">
 
       <ul className="p-6">
         {
@@ -30,7 +30,10 @@ useEffect( ()=>{
       </ul>
 
 
-      <Outlet></Outlet>
+      <div className="md:w-3/4 mx-auto">
+        <Outlet></Outlet>
+        
+    </div>
     </div>
   );
 };

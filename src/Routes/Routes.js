@@ -1,5 +1,6 @@
 import Profile from "../Components/Private/Profile";
 import Blogs from "../Components/Shared/Blogs";
+import CourseDetails from "../Components/Shared/CourseDetails";
 import Courses from "../Components/Shared/Courses";
 import CoursesCategory from "../Components/Shared/CoursesCategory";
 import Faq from "../Components/Shared/Faq";
@@ -54,6 +55,10 @@ export const routes = createBrowserRouter([
                 path: '/profile',
                 element: <PrivateRoute><Profile></Profile></PrivateRoute>
             },
+            {
+                path: '/courseDetails',
+                element: <CourseDetails></CourseDetails>
+            }
         ]
     }
 ])
