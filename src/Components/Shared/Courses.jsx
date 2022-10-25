@@ -23,7 +23,9 @@ useEffect( ()=>{
         {
         
         courses.map((e) => (
-          <li className="p-2 font-semibold">
+          <li
+          key={e.id}
+          className="p-2 font-semibold">
             <Link to={`/courses/${e.id}`} className="p-3">{e.name}</Link>
           </li>
         ))}
