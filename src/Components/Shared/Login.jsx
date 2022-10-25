@@ -1,11 +1,14 @@
 import { Result } from "postcss";
 import React from "react";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
 
 const Login = () => {
   const { logInUser, setUser } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || '/';
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -17,6 +20,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
+        navigate(from, {replace:true})
       })
       .catch((e) => {
         console.log(e);

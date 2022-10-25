@@ -4,6 +4,7 @@ import Courses from "../Components/Shared/Courses";
 import Faq from "../Components/Shared/Faq";
 import Login from "../Components/Shared/Login";
 import Register from "../Components/Shared/Register";
+import PrivateRoute from "./PrivateRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Home } = require("../Components/Home/Home");
@@ -28,7 +29,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/blogs',
-                element: <Blogs></Blogs>
+                element: <PrivateRoute><Blogs></Blogs></PrivateRoute>
             },
             {
                 path: '/register',
@@ -40,7 +41,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/profile',
-                element: <Profile></Profile>
+                element: <PrivateRoute><Profile></Profile></PrivateRoute>
             },
         ]
     }
