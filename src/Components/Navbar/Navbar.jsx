@@ -8,7 +8,7 @@ const Navbar = () => {
     const [open, setOpen] = useState(false);
 
   return (
-    <div className="navbar bg-base-100 md:w-3/4 mx-auto">
+    <div className="navbar bg-base-100 lg:w-3/4 mx-auto">
       <div className="navbar-start relative">
 
       <label onClick={()=>setOpen(!open)}  className="btn btn-ghost text-xl md:hidden ">
@@ -23,7 +23,7 @@ const Navbar = () => {
         <Link className="btn btn-ghost normal-case text-xl">EducatorIO</Link>
       </div>
       <div className="navbar-center">
-        <ul className={`md:flex py-8 md:py-0  font-semibold absolute md:static md:z-auto z-[-1] left-0 md:pl-0 pl-9 w-full md:w-auto transition-all duration-500 ease-in ${open ? 'top-20' : 'top-[-600px]'}`}>
+        <ul className={`md:flex py-8 md:py-0 bg-gray-200 md:bg-base-100  font-semibold absolute md:static left-0 md:pl-0 pl-9 w-full md:w-auto transition-all duration-500 ease-in ${open ? 'top-16' : 'top-[-600px]'}`}>
           <li className='p-3 '>
             <Link to="/">Home</Link>
           </li>

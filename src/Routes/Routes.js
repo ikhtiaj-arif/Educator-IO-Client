@@ -1,6 +1,7 @@
 import Blogs from "../Components/Shared/Blogs";
 import Courses from "../Components/Shared/Courses";
 import Faq from "../Components/Shared/Faq";
+import Register from "../Components/Shared/Register";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Home } = require("../Components/Home/Home");
@@ -26,6 +27,10 @@ export const routes = createBrowserRouter([
             {
                 path: '/blogs',
                 element: <Blogs></Blogs>
+            },
+            {
+                path: '/register',
+                element: <Register></Register>
             },
         ]
     }
