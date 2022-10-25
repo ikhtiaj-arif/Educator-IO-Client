@@ -1,18 +1,73 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+import { FaUserTie, FaAlignLeft } from 'react-icons/fa';
+import { HiOutlineXMark } from "react-icons/hi2";
+import { useState } from "react";
 
 const Navbar = () => {
-    return (
-        <div className='flex justify-between w-3/4 mx-auto'>
-            <Link to='/'>
-            <h2>Title and Logo</h2>
-            </Link>
+    const [open, setOpen] = useState(false);
 
-            <div>
-                <Link to='/blogs'>Blogs</Link>
-            </div>
+  return (
+    <div className="navbar bg-base-100 md:w-3/4 mx-auto">
+      <div className="navbar-start relative">
+
+      <label onClick={()=>setOpen(!open)}  className="btn btn-ghost text-xl md:hidden ">
+        {open ? 
+        <HiOutlineXMark/>
+        : <FaAlignLeft/> }
+      
+      </label>
+      
+
+
+        <Link className="btn btn-ghost normal-case text-xl">EducatorIO</Link>
+      </div>
+      <div className="navbar-center">
+        <ul className={`md:flex py-8 md:py-0  font-semibold absolute md:static md:z-auto z-[-1] left-0 md:pl-0 pl-9 w-full md:w-auto transition-all duration-500 ease-in ${open ? 'top-20' : 'top-[-600px]'}`}>
+          <li className='p-3 '>
+            <Link to="/">Home</Link>
+          </li>
+          <li className='p-3 '>
+            <Link to="/courses">Courses</Link>
+          </li>
+          <li className='p-3 '>
+            <Link to="/f-a-q">F A Q</Link>
+          </li>
+          <li className='p-3 '>
+            <Link to="/blogs">Blogs</Link>
+          </li>
+        </ul>
+      </div>
+
+      <div className="navbar-end">
+        <div>
+        <Link>
+         <FaUserTie/>
+        </Link>
         </div>
-    );
+
+        <div className="form-control">
+          <label className="label cursor-pointer">
+            <span className="label-text">light dark</span>
+            <input type="checkbox" className="toggle toggle-accent"  />
+          </label>
+        </div>
+      </div>
+    </div>
+
+    // <nav className='flex justify-between md:w-3/4 mx-auto'>
+    //     <Link to='/'>
+    //     <h2>Title and Logo</h2>
+    //     </Link>
+
+    //     <div>
+    //         <Link to='/blogs'>Home</Link>
+    //         <Link to='/blogs'>Courses</Link>
+    //         <Link to='/blogs'>Blogs</Link>
+    //         <Link to='/blogs'>FAQ</Link>
+    //     </div>
+    // </nav>
+  );
 };
 
 export default Navbar;

@@ -1,4 +1,6 @@
 import Blogs from "../Components/Shared/Blogs";
+import Courses from "../Components/Shared/Courses";
+import Faq from "../Components/Shared/Faq";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Home } = require("../Components/Home/Home");
@@ -14,9 +16,17 @@ export const routes = createBrowserRouter([
                 element: <Home></Home>
             },
             {
+                path: '/courses',
+                element: <Courses></Courses>
+            },
+            {
+                path: '/f-a-q',
+                element: <Faq></Faq>
+            },
+            {
                 path: '/blogs',
                 element: <Blogs></Blogs>
-            }
+            },
         ]
     }
 ])
