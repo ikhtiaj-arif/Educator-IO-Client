@@ -3,9 +3,19 @@ import { Link } from "react-router-dom";
 import { FaUserTie, FaAlignLeft } from 'react-icons/fa';
 import { HiOutlineXMark } from "react-icons/hi2";
 import { useState } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../../Context/UserContext";
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
+    const {user, logOutUser} = useContext(AuthContext);
+    console.log(user)
+
+    const handleLogOut = () => {
+      logOutUser()
+      .then( ()=>{})
+      .catch(e => console.log(e))
+    }
 
   return (
     <div className="navbar bg-base-100 lg:w-3/4 mx-auto">
@@ -42,7 +52,15 @@ const Navbar = () => {
       <div className="navbar-end">
         <div>
         <Link>
-         <FaUserTie/>
+        {
+          user && user.uid ? <>
+          <button className="btn btn-outline btn-secondary" onClick={handleLogOut}>Logout</button>
+          {user.email} 
+          </>
+          :<FaUserTie/>
+
+        }
+         
         </Link>
         </div>
 
