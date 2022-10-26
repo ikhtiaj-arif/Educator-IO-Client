@@ -7,6 +7,7 @@ import CoursesCategory from "../Components/Shared/CoursesCategory";
 import Faq from "../Components/Shared/Faq";
 import Login from "../Components/Shared/Login";
 import Register from "../Components/Shared/Register";
+import TermsAndConditions from "../Components/Shared/TermsAndConditions";
 import PrivateRoute from "./PrivateRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -64,6 +65,10 @@ export const routes = createBrowserRouter([
             {
                 path: '/checkout',
                 element: <PrivateRoute><Checkout></Checkout></PrivateRoute>
+            },
+            {
+                path: '/terms',
+                element: <TermsAndConditions></TermsAndConditions>
             }
         ]
     }
