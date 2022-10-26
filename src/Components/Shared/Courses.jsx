@@ -32,7 +32,7 @@ useEffect( ()=>{
       </ul>
 
 
-      <div className="md:w-3/4 mx-auto">
+      <div className="md:w-3/4 mx-auto overflow-y-auto">
         <Outlet></Outlet>
         
     </div>

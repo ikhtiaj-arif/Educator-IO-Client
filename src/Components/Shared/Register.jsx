@@ -1,3 +1,4 @@
+import toast from 'react-hot-toast';
 import React from "react";
 import { useState } from "react";
 import { useContext } from "react";
@@ -5,20 +6,29 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
 
 const Register = () => {
+  const [checked, setChecked] = useState(false);
 
-    const [checked, setChecked] = useState(false)
+  const {
+    user,
+    setUser,
+    createUser,
+    googleLogIn,
+    githubLogIn,
+    logOutUser,
+    updateUserProfile,
+    verifyUser
 
-  const { user, setUser, createUser, googleLogIn, githubLogIn, logOutUser } =
-    useContext(AuthContext);
+  } = useContext(AuthContext);
 
-    const handleCheckBox = (event) => {
-        setChecked(event.target.checked)
-    }
+  const handleCheckBox = (event) => {
+    setChecked(event.target.checked);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
+    const photo = form.photoURL.value;
     const email = form.email.value;
     const password = form.password.value;
     const password_confirmation = form.password_confirmation.value;
@@ -28,12 +38,28 @@ const Register = () => {
         .then((result) => {
           const user = result.user;
           setUser(user);
+          handleUpdate(name, photo);
+          handleVerification();
+          toast.success('Account Successfully Created! Please Verify Your Email For Confirmation!',{duration: 8000});
+          form.reset()
         })
         .catch((e) => {
           console.log(e);
         });
     }
   };
+
+  const handleUpdate = (name, photo) => {
+    const profile = {displayName: name, photoURL: photo};
+    updateUserProfile(profile)
+    .then( ()=> {})
+    .catch(e=>console.log(e))
+  }
+  const handleVerification = () => {
+    verifyUser()
+    .then(()=>{})
+    .catch(e => console.log(e))
+  }
 
   const handleGoogleLogin = () => {
     googleLogIn()
@@ -61,122 +87,119 @@ const Register = () => {
 
   return (
     <div>
-           {user && user?.uid ? (
-            <div>
-              <p>Please Log Out If You Want To Create A New Account</p>
-
-              <button
-                className="btn btn-outline btn-secondary mx-2"
-                onClick={handleLogOut}
-              >
-                Logout
-              </button>
-            </div>
-          ) : 
-      <div className="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 bg-gray-500">
+      {user && user?.uid ? (
         <div>
-          <a href="/">
-            <h3 className="text-4xl font-bold text-purple-600">
-              Create A New Account
-            </h3>
-          </a>
+          <p>Please Log Out If You Want To Create A New Account</p>
+
+          <button
+            className="btn btn-outline btn-secondary mx-2"
+            onClick={handleLogOut}
+          >
+            Logout
+          </button>
         </div>
-        <div className="w-full px-6 py-4 mt-6 overflow-hidden bg-gray-500 shadow-md sm:max-w-lg sm:rounded-lg">
-          <form onSubmit={handleSubmit}>
-            <div>
-              <div className="flex flex-col items-start">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Full Name"
-                  className="block w-full p-3  rounded-md shadow-sm text-gray-700"
-                />
-              </div>
-            </div>
-            <div className="mt-4">
-              <div className="flex flex-col items-start">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Photo URL"
-                  className="block w-full p-3  rounded-md shadow-sm text-gray-700"
-                />
-              </div>
-            </div>
-            <div className="mt-4">
-              <div className="flex flex-col items-start">
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  className="block w-full p-3  rounded-md shadow-sm text-gray-700"
-                />
-              </div>
-            </div>
-            <div className="mt-4">
-              <div className="flex flex-col items-start">
-                <input
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  className="block w-full mt-1 p-3 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                />
-              </div>
-            </div>
-            <div className="mt-4">
-              <div className="flex flex-col items-start">
-                <input
-                  type="password"
-                  name="password_confirmation"
-                  placeholder="Confirm Password"
-                  className="block w-full mt-1 p-3 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                />
-              </div>
-            </div>
-
-
-            <div className="flex align-center mt-3">
-
-         
-              
-              <input
-              onClick={handleCheckBox}
-                type="checkbox"
-                className="checkbox checkbox-accent"
-              />
-              <p className="mx-3">Accept Out <Link to='/terms'><span className="link text-purple-700">Terms & Condition's</span></Link></p>
-         
-            </div>
-
-
-            <div className="flex items-center mt-4">
-              <button
-                type="submit"
-                className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-red-600 rounded-md hover:bg-red-400 focus:outline-none disabled:opacity-50"
-                disabled={!checked}
-              >
-                Register
-              </button>
-            </div>
-          </form>
-          <div className="mt-4 text-grey-600">
-            Already have an account?{" "}
-            <span>
-              <Link className="text-purple-900 hover:underline" to="/login">
-                Log in
-              </Link>
-            </span>
+      ) : (
+        <div className="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 bg-gray-500">
+          <div>
+            <a href="/">
+              <h3 className="text-4xl font-bold text-purple-600">
+                Create A New Account
+              </h3>
+            </a>
           </div>
-          <div className="flex items-center w-full my-4">
-            <hr className="w-full" />
-            <p className="px-3 ">OR</p>
-            <hr className="w-full" />
-          </div>
+          <div className="w-full px-6 py-4 mt-6 overflow-hidden bg-gray-500 shadow-md sm:max-w-lg sm:rounded-lg">
+            <form onSubmit={handleSubmit}>
+              <div>
+                <div className="flex flex-col items-start">
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Full Name"
+                    className="block w-full p-3  rounded-md shadow-sm text-gray-700"
+                  />
+                </div>
+              </div>
+              <div className="mt-4">
+                <div className="flex flex-col items-start">
+                  <input
+                    type="text"
+                    name="photoURL"
+                    placeholder="Photo URL"
+                    className="block w-full p-3  rounded-md shadow-sm text-gray-700"
+                  />
+                </div>
+              </div>
+              <div className="mt-4">
+                <div className="flex flex-col items-start">
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    className="block w-full p-3  rounded-md shadow-sm text-gray-700"
+                  />
+                </div>
+              </div>
+              <div className="mt-4">
+                <div className="flex flex-col items-start">
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    className="block w-full mt-1 p-3 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                  />
+                </div>
+              </div>
+              <div className="mt-4">
+                <div className="flex flex-col items-start">
+                  <input
+                    type="password"
+                    name="password_confirmation"
+                    placeholder="Confirm Password"
+                    className="block w-full mt-1 p-3 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                  />
+                </div>
+              </div>
 
-       
+              <div className="flex align-center mt-3">
+                <input
+                  onClick={handleCheckBox}
+                  type="checkbox"
+                  className="checkbox checkbox-accent"
+                />
+                <p className="mx-3">
+                  Accept Out{" "}
+                  <Link to="/terms">
+                    <span className="link text-purple-700">
+                      Terms & Condition's
+                    </span>
+                  </Link>
+                </p>
+              </div>
 
+              <div className="flex items-center mt-4">
+                <button
+                  type="submit"
+                  className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-red-600 rounded-md hover:bg-red-400 focus:outline-none disabled:opacity-50"
+                  disabled={!checked}
+                >
+                  Register
+                </button>
+              </div>
+            </form>
+            <div className="mt-4 text-grey-600">
+              Already have an account?{" "}
+              <span>
+                <Link className="text-purple-900 hover:underline" to="/login">
+                  Log in
+                </Link>
+              </span>
+            </div>
+            <div className="flex items-center w-full my-4">
+              <hr className="w-full" />
+              <p className="px-3 ">OR</p>
+              <hr className="w-full" />
+            </div>
 
-            
             <div className="my-6 space-y-2">
               <button
                 onClick={handleGoogleLogin}
@@ -209,9 +232,9 @@ const Register = () => {
                 <p>Login with GitHub</p>
               </button>
             </div>
+          </div>
         </div>
-      </div>
-        }
+      )}
     </div>
   );
 };
