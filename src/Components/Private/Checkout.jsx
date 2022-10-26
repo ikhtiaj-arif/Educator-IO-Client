@@ -5,7 +5,6 @@ import { useLoaderData } from "react-router-dom";
 const Checkout = () => {
   const details = useLoaderData();
   const {
-
     cover,
     coursesName,
     description,
@@ -42,8 +41,10 @@ const Checkout = () => {
                {description}
               </p>
               <div className="mt-12 space-y-12">
-                {points.map(item => <div className="flex">
-                  <div key={item._id} className="flex-shrink-0">
+                {points.map((item, idx) => <div 
+                key={idx}
+                className="flex">
+                  <div  className="flex-shrink-0">
                     <div className="flex items-center justify-center w-6 h-6 rounded-md dark:bg-violet-400 dark:text-gray-900">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

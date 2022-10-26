@@ -51,8 +51,8 @@ const CourseDetails = () => {
             <img className="w-3/4 md:w-2/4" src={cover} alt="" />
             <ul>
                 <p  className="text-2xl text-cyan-400 ">All The Topics : </p>
-              {points.map((e) => (
-                <li key={e._id} className="flex items-center text-gray-200 pt-1"> <FaRegHandPointRight className="text-purple-400 mr-2"></FaRegHandPointRight> {e}</li>
+              {points.map((e, idx) => (
+                <li key={idx} className="flex items-center text-gray-200 pt-1"> <FaRegHandPointRight className="text-purple-400 mr-2"></FaRegHandPointRight> {e}</li>
               ))}
             </ul>
           </div>

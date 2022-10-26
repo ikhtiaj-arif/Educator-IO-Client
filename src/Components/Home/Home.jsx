@@ -6,16 +6,25 @@ import { Link } from 'react-router-dom';
 const Home = () => {
   return (
     <>
-    <div className="hero min-h-screen" style={{ backgroundImage: `url("https://placeimg.com/1000/800/arch")` }}>
-  <div className="hero-overlay bg-opacity-60"></div>
-  <div className="hero-content text-center text-neutral-content">
-    <div className="lg:w-3/4">
-      <h1 className="mb-5 text-5xl font-bold">Get The Best Free Online Courses</h1>
-      <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-      <Link to='/register'><button className="btn btn-primary">Register Now</button></Link>
-    </div>
-  </div>
-</div>
+    <section className="dark:bg-gray-800 dark:text-gray-100">
+	<div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
+		<div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
+			<h1 className="text-5xl font-bold leading-none sm:text-6xl">A Perfect 
+				<span className="dark:text-violet-400">Place To Start</span>Your Journey!
+			</h1>
+			<p className="mt-6 mb-8 text-lg sm:mb-12">Learn Different Topics Form The Best Teacher's.
+				
+			</p>
+			<div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
+				<Link rel="noopener noreferrer" to='/register' className="px-8 py-3 text-lg font-semibold rounded dark:bg-violet-400 dark:text-gray-900">Register Now</Link>
+				<Link rel="noopener noreferrer" to='/courses/0' className="px-8 py-3 text-lg font-semibold border rounded dark:border-gray-100">See The Courses</Link>
+			</div>
+		</div>
+		<div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
+			<img src="" alt="" className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128" />
+		</div>
+	</div>
+</section>
     </>
   );
 };

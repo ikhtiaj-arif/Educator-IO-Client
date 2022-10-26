@@ -1,13 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import logo from '../../images/logo.png'
 import { FaUserTie, FaAlignLeft } from "react-icons/fa";
 import { HiOutlineXMark } from "react-icons/hi2";
 import { useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/UserContext";
+import { FaSun, FaMoon } from 'react-icons/fa';
+import './Navbar.css'
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [theme, setTheme] = useState(false)
   const { user, logOutUser } = useContext(AuthContext);
   // console.log(user);
 
@@ -18,8 +22,10 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar lg:w-3/4 mx-auto">
+    <div className="navbar py-5 lg:w-3/4 mx-auto">
+        
       <div className="navbar-start relative">
+  
         <label
           onClick={() => setOpen(!open)}
           className="btn btn-ghost text-xl md:hidden "
@@ -27,13 +33,15 @@ const Navbar = () => {
           {open ? <HiOutlineXMark /> : <FaAlignLeft />}
         </label>
 
-        <Link to="/" className=" normal-case text-2xl text-white font-serif">
+
+        <Link to="/" className="flex items-center normal-case text-3xl text-white font-serif">
+        <img className="w-8 rounded-full" src={logo} alt="" />
           EducatorIO
         </Link>
       </div>
       <div className="navbar-center">
         <ul
-          className={`md:flex py-8 md:py-0 bg-gray-200 md:bg-base-100 text-gray-600 md:text-gray-100 font-semibold absolute md:static left-0 md:pl-0 pl-9 w-full md:w-auto transition-all duration-500 ease-in z-10  ${
+          className={`md:flex py-8 md:py-0 bg-gray-200 md:bg-base-100 text-gray-600 text-lg md:text-gray-100 font-semibold absolute md:static left-0 md:pl-0 pl-9 w-full md:w-auto transition-all duration-500 ease-in z-10  ${
             open ? "top-16" : "top-[-600px]"
           }`}
         >
@@ -41,13 +49,13 @@ const Navbar = () => {
             <Link to="/">Home</Link>
           </li>
           <li className="p-3 ">
-            <Link to="/courses/0">Courses</Link>
+            <NavLink to="/courses/0">Courses</NavLink>
           </li>
           <li className="p-3 ">
-            <Link to="/f-a-q">F A Q</Link>
+            <NavLink to="/f-a-q">F A Q</NavLink>
           </li>
           <li className="p-3 ">
-            <Link to="/blogs">Blogs</Link>
+            <NavLink to="/blogs">Blogs</NavLink>
           </li>
         </ul>
       </div>
@@ -60,6 +68,7 @@ const Navbar = () => {
                 <div className="flex items-center ">
                   {user.photoURL ? (
                     <img
+                      
                       className="w-10 rounded-full"
                       src={user.photoURL}
                       alt=""
@@ -83,27 +92,22 @@ const Navbar = () => {
           </Link>
         </div>
 
-        <div className="form-control">
-          <label className="label cursor-pointer">
-            <span className="label-text"></span>
-            <input type="checkbox" className="toggle toggle-accent" />
-          </label>
+        <div className="">
+        <button className="p-2 cursor-pointer" onClick={()=>setTheme(!theme)}>
+          {
+            theme ? 
+            
+            <FaSun className="text-2xl text-orange-400"></FaSun>
+            :
+          <FaMoon className="text-2xl text-cyan-700"></FaMoon>
+          }
+          
+          </button>
+          
         </div>
       </div>
     </div>
 
-    // <nav className='flex justify-between md:w-3/4 mx-auto'>
-    //     <Link to='/'>
-    //     <h2>Title and Logo</h2>
-    //     </Link>
-
-    //     <div>
-    //         <Link to='/blogs'>Home</Link>
-    //         <Link to='/blogs'>Courses</Link>
-    //         <Link to='/blogs'>Blogs</Link>
-    //         <Link to='/blogs'>FAQ</Link>
-    //     </div>
-    // </nav>
   );
 };
 

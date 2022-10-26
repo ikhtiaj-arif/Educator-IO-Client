@@ -21,7 +21,7 @@ const CoursesCategory = () => {
               
             </div>
             <Link className="w-full" to={`/courseDetails/${e._id}`}>
-                <button className="btn bg-cyan-600 text-white hover:btn-info w-full">Learn More</button>
+                <button className="btn bg-violet-400 text-white hover:bg-violet-500 w-full">Learn More</button>
               </Link>
           </div>
         </div>
