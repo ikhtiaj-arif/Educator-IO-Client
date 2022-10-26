@@ -1,4 +1,5 @@
-import { Result } from "postcss";
+
+import toast from 'react-hot-toast';
 import React from "react";
 import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -20,6 +21,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
+        toast.success('Login Successful!')
         navigate(from, {replace:true})
       })
       .catch((e) => {
