@@ -1,8 +1,9 @@
-import { linkWithCredential } from "firebase/auth";
+
 import React from "react";
 import { useLoaderData, Link } from "react-router-dom";
 import Pdf from "react-to-pdf";
-import { FaRegHandPointRight } from "react-icons/fa"
+import { FaRegHandPointRight } from "react-icons/fa";
+import { toast } from "react-hot-toast";
 
 const ref = React.createRef();
 
@@ -10,14 +11,21 @@ const CourseDetails = () => {
   const details = useLoaderData();
   console.log(details);
   const {
+
     cover,
+    _id,
     coursesName,
     pricePer,
     priceAll,
     rating,
     description,
     points,
+
   } = details;
+
+  const notify =()=> { 
+   toast.success('Congratulations ! Premium Access Granted!')
+  }
 
   return (
     <div className="lg:w-3/4 mx-auto p-3">
@@ -44,7 +52,7 @@ const CourseDetails = () => {
             <ul>
                 <p  className="text-2xl text-cyan-400 ">All The Topics : </p>
               {points.map((e) => (
-                <li className="flex items-center text-gray-200 pt-1"> <FaRegHandPointRight className="text-purple-400 mr-2"></FaRegHandPointRight> {e}</li>
+                <li key={e._id} className="flex items-center text-gray-200 pt-1"> <FaRegHandPointRight className="text-purple-400 mr-2"></FaRegHandPointRight> {e}</li>
               ))}
             </ul>
           </div>
@@ -67,8 +75,8 @@ const CourseDetails = () => {
           <div className="md:flex justify-between items-center mb-2">
             <p className="text-lg text-white mb-2">Rating : {rating.rate}/5</p>
             <p className="text-lg text-white mb-2">Students : {rating.count}</p>
-            <Link to="/checkout">
-            <button className="btn btn-outline btn-error">Enroll Now</button>
+            <Link to={`/checkout/${_id}`}>
+            <button onClick={()=>notify()} className="btn btn-outline btn-error">Enroll Now</button>
           </Link>
           </div>
          

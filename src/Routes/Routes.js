@@ -35,8 +35,6 @@ export const routes = createBrowserRouter([
                 ]
               
             },
-           
-          
             {
                 path: '/f-a-q',
                 element: <Faq></Faq>
@@ -64,8 +62,9 @@ export const routes = createBrowserRouter([
                 loader: ({params}) => fetch(`http://localhost:5000/details/${params.id}`)
             },
             {
-                path: '/checkout',
-                element: <PrivateRoute><Checkout></Checkout></PrivateRoute>
+                path: '/checkout/:id',
+                element: <PrivateRoute><Checkout></Checkout></PrivateRoute>,
+                loader: ({params}) => fetch(`http://localhost:5000/details/${params.id}`)
             },
             {
                 path: '/terms',
