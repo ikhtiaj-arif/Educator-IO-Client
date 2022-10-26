@@ -43,7 +43,8 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/blogs',
-                element: <PrivateRoute><Blogs></Blogs></PrivateRoute>
+                element: <Blogs></Blogs>,
+                loader: ()=> fetch('http://localhost:5000/blogs/allblogs')
             },
             {
                 path: '/register',

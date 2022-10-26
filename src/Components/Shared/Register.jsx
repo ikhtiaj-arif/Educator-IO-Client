@@ -44,7 +44,7 @@ const Register = () => {
           form.reset()
         })
         .catch((e) => {
-          console.log(e);
+            toast.error(e.message);
         });
     }
   };
@@ -53,12 +53,12 @@ const Register = () => {
     const profile = {displayName: name, photoURL: photo};
     updateUserProfile(profile)
     .then( ()=> {})
-    .catch(e=>console.log(e))
+    .catch(e=>toast.error(e.message))
   }
   const handleVerification = () => {
     verifyUser()
     .then(()=>{})
-    .catch(e => console.log(e))
+    .catch(e =>toast.error(e.message))
   }
 
   const handleGoogleLogin = () => {
@@ -66,8 +66,9 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
+        toast.success('Login Successful!')
       })
-      .catch((e) => console.log(e));
+      .catch((e) => toast.error(e.message));
   };
 
   const handleGithubLogin = () => {
@@ -75,14 +76,15 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
+        toast.success('Login Successful!')
       })
-      .catch((e) => console.log(e));
+      .catch((e) => toast.error(e.message));
   };
 
   const handleLogOut = () => {
     logOutUser()
       .then(() => {})
-      .catch((e) => console.log(e));
+      .catch((e) => toast.error(e.message));
   };
 
   return (

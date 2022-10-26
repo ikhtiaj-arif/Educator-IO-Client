@@ -25,7 +25,6 @@ const Login = () => {
         navigate(from, {replace:true})
       })
       .catch((e) => {
-        console.log(e)
         toast.error(e.message)
       });
   };
@@ -38,7 +37,7 @@ const Login = () => {
         toast.success('Login Successful!')
         navigate(from, {replace:true})
       })
-      .catch((e) => console.log(e));
+      .catch((e) => toast.error(e.message));
   };
 
   const handleGithubLogin = () => {
@@ -49,13 +48,15 @@ const Login = () => {
         toast.success('Login Successful!')
         navigate(from, {replace:true})
       })
-      .catch((e) => console.log(e));
+      .catch((e) => toast.error(e.message));
   };
 
   const handleLogOut = () =>{
     logOutUser()
-    .then( ()=>{})
-    .catch(e => console.log(e))
+    .then( ()=>{
+     
+    })
+    .catch(e => toast.error(e.message))
   }
 
   return (
