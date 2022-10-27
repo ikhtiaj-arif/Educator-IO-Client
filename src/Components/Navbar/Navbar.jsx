@@ -67,12 +67,19 @@ const Navbar = () => {
               {user && user.uid ? (
                 <div className="flex items-center ">
                   {user.photoURL ? (
-                    <img
+                    <div className="relative">
+                      <img
+                    
+                    className="w-10 rounded-full"
+                    src={user.photoURL}
+                    alt=""
+                      />
+                      <div className="absolute text-white top-0 left-0 opacity-0 hover:opacity-100 transition duration-300 ease-in-out">
+                     
+                      {user.displayName}
                       
-                      className="w-10 rounded-full"
-                      src={user.photoURL}
-                      alt=""
-                    />
+                      </div>
+                    </div>
                   ) : (
                     <FaUserTie className="w-10 text-xl rounded-full"></FaUserTie>
                   )}

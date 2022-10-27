@@ -2,11 +2,14 @@ import toast from 'react-hot-toast';
 import React from "react";
 import { useState } from "react";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
 
 const Register = () => {
   const [checked, setChecked] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
 
   const {
     user,
@@ -32,6 +35,7 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     const password_confirmation = form.password_confirmation.value;
+    
 
     if (password === password_confirmation) {
       createUser(email, password)
@@ -41,7 +45,8 @@ const Register = () => {
           handleUpdate(name, photo);
           handleVerification();
           toast.success('Account Successfully Created! Please Verify Your Email For Confirmation!',{duration: 8000});
-          form.reset()
+          form.reset();
+          navigate(from, { replace: true });
         })
         .catch((e) => {
             toast.error(e.message);
@@ -90,7 +95,7 @@ const Register = () => {
   return (
     <div>
       {user && user?.uid ? (
-        <div>
+        <div className='md:w-3/4 mx-auto'>
           <p>Please Log Out If You Want To Create A New Account</p>
 
           <button
@@ -111,7 +116,7 @@ const Register = () => {
           </div>
           <div className="w-full px-6 py-4 mt-6 overflow-hidden bg-gray-500 shadow-md sm:max-w-lg sm:rounded-lg">
             <form onSubmit={handleSubmit}>
-              <div>
+              
                 <div className="flex flex-col items-start">
                   <input
                     type="text"
@@ -120,7 +125,7 @@ const Register = () => {
                     className="block w-full p-3  rounded-md shadow-sm text-gray-700"
                   />
                 </div>
-              </div>
+              
               <div className="mt-4">
                 <div className="flex flex-col items-start">
                   <input

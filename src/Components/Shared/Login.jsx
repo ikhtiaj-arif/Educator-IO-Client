@@ -3,7 +3,7 @@ import React from "react";
 import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
-import { FaGoogle, FaGithub } from "react-icons/fa";
+
 
 const Login = () => {
   const { user, logInUser, setUser, googleLogIn, githubLogIn, logOutUser } =
@@ -23,6 +23,7 @@ const Login = () => {
         const user = result.user;
         setUser(user);
         toast.success("Login Successful!");
+        form.reset();
         navigate(from, { replace: true });
       })
       .catch((e) => {
