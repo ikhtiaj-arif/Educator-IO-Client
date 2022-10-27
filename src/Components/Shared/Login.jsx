@@ -3,6 +3,7 @@ import React from "react";
 import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
+import { useState } from "react";
 
 const Login = () => {
   const {
@@ -13,7 +14,12 @@ const Login = () => {
     googleLogIn,
     githubLogIn,
     logOutUser,
+    updateUserPassword
   } = useContext(AuthContext);
+
+  const [email, setEmail] = useState('')
+
+
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
@@ -23,6 +29,7 @@ const Login = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
+   
 
     logInUser(email, password)
       .then((result) => {
@@ -67,6 +74,19 @@ const Login = () => {
       .then(() => {})
       .catch((e) => toast.error(e.message));
   };
+ 
+  const getEmail = (e) => {
+   setEmail(e.target.value)
+  }
+  
+
+  const handleForgotPassword = (email) => {
+    updateUserPassword(email)
+    .then( ()=>{
+      toast.success('Password Reset Link Sent To Your Email !')
+    })
+    .catch(e => toast.error(e.message))
+  }
 
   return (
     
@@ -75,6 +95,7 @@ const Login = () => {
         <div className="mt-4">
           <div className="flex flex-col items-start">
             <input
+            onBlur={getEmail}
               type="email"
               name="email"
               placeholder="Email"
@@ -102,13 +123,14 @@ const Login = () => {
         </div>
       </form>
       <div className="bg-gray-500 py-4 px-6 rounded-b-lg">
-      <Link
+      <button
+      onClick={() =>handleForgotPassword(email)}
         href="#"
         className="text-md text-violet-800 font-medium hover:underline"
       >
         Forget Password?
-      </Link>
-      <div className="mt-4 text-grey-600">
+      </button>
+      <div className="mt-4 text-gray-300">
         Don't Have An Account?{" "}
         <span>
           <Link

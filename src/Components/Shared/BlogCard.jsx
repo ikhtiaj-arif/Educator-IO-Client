@@ -2,6 +2,7 @@ import React from "react";
 
 const BlogCard = ({ item }) => {
   const { cover, date, title, desc } = item;
+  // got dynamic data from server
   return (
     <div className="block max-w-sm gap-3 mx-auto sm:max-w-full group hover:no-underline focus:no-underline lg:grid lg:grid-cols-12 dark:bg-gray-900">
       <img

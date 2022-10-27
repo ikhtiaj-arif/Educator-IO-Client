@@ -1,17 +1,18 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import logo from '../../images/logo.png'
+import logo from "../../images/logo.png";
 import { FaUserTie, FaAlignLeft } from "react-icons/fa";
 import { HiOutlineXMark } from "react-icons/hi2";
 import { useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/UserContext";
-import { FaSun, FaMoon } from 'react-icons/fa';
-import './Navbar.css'
+import { FaSun, FaMoon } from "react-icons/fa";
+import "./Navbar.css";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-  const [theme, setTheme] = useState(false)
+  const [theme, setTheme] = useState(false);
+  // context data to get user data
   const { user, logOutUser } = useContext(AuthContext);
   // console.log(user);
 
@@ -23,9 +24,8 @@ const Navbar = () => {
 
   return (
     <div className="navbar py-5 lg:w-3/4 mx-auto">
-        
       <div className="navbar-start relative">
-  
+        {/* conditional check for responsive toggle button */}
         <label
           onClick={() => setOpen(!open)}
           className="btn btn-ghost text-xl md:hidden "
@@ -33,9 +33,11 @@ const Navbar = () => {
           {open ? <HiOutlineXMark /> : <FaAlignLeft />}
         </label>
 
-
-        <Link to="/" className="flex items-center normal-case text-3xl text-white font-serif">
-        <img className="w-8 rounded-full" src={logo} alt="" />
+        <Link
+          to="/"
+          className="flex items-center normal-case text-3xl text-white font-serif"
+        >
+          <img className="w-8 rounded-full" src={logo} alt="" />
           EducatorIO
         </Link>
       </div>
@@ -63,21 +65,19 @@ const Navbar = () => {
       <div className="navbar-end">
         <div>
           <Link to="/profile">
+            {/* conditional check user to get user data */}
             <>
               {user && user.uid ? (
                 <div className="flex items-center ">
                   {user.photoURL ? (
                     <div className="relative">
                       <img
-                    
-                    className="w-10 rounded-full"
-                    src={user.photoURL}
-                    alt=""
+                        className="w-10 rounded-full"
+                        src={user.photoURL}
+                        alt=""
                       />
                       <div className="absolute text-white top-0 left-0 opacity-0 hover:opacity-100 transition duration-300 ease-in-out">
-                     
-                      {user.displayName}
-                      
+                        {user.displayName}
                       </div>
                     </div>
                   ) : (
@@ -98,23 +98,21 @@ const Navbar = () => {
             </>
           </Link>
         </div>
-
+        {/* dark mode toggle button */}
         <div className="">
-        <button className="p-2 cursor-pointer" onClick={()=>setTheme(!theme)}>
-          {
-            theme ? 
-            
-            <FaSun className="text-2xl text-orange-400"></FaSun>
-            :
-          <FaMoon className="text-2xl text-cyan-700"></FaMoon>
-          }
-          
+          <button
+            className="p-2 cursor-pointer"
+            onClick={() => setTheme(!theme)}
+          >
+            {theme ? (
+              <FaSun className="text-2xl text-orange-400"></FaSun>
+            ) : (
+              <FaMoon className="text-2xl text-cyan-700"></FaMoon>
+            )}
           </button>
-          
         </div>
       </div>
     </div>
-
   );
 };
 

@@ -32,7 +32,7 @@ const Profile = () => {
   const handleReset = (email) => {
     updateUserPassword(email)
     .then( ()=>{
-      toast.success('Reset Link Sent To Your Email !')
+      toast.success('Password Reset Link Sent To Your Email !')
     })
     .catch(e => toast.error(e.message))
    

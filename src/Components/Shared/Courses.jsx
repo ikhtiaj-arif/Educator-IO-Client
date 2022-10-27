@@ -5,7 +5,7 @@ import { NavLink, Outlet } from "react-router-dom";
 
 const Courses = () => {
   const [courses, setCourses] = useState([]);
-
+// directly fetch data 
   useEffect(() => {
     fetch("https://assignment-10-server-gamma.vercel.app/")
       .then((res) => res.json())

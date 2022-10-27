@@ -83,7 +83,7 @@ const CourseDetails = () => {
             <p className="text-lg text-white mb-2">Rating : {rating.rate}/5</p>
             <p className="text-lg text-white mb-2">Students : {rating.count}</p>
             <Link to={`/checkout/${_id}`}>
-            <button onClick={()=>notify()} className="btn btn-outline btn-error">Enroll Now</button>
+            <button onClick={()=>notify()} className="btn btn-outline btn-error">Enroll Premium Now</button>
           </Link>
           </div>
          

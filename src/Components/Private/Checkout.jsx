@@ -4,6 +4,7 @@ import { useLoaderData } from "react-router-dom";
 
 const Checkout = () => {
   const details = useLoaderData();
+  // used dynamil loader data to get data 
   const {
     cover,
     coursesName,
@@ -41,6 +42,7 @@ const Checkout = () => {
                {description}
               </p>
               <div className="mt-12 space-y-12">
+                {/* maping points array to get each item */}
                 {points.map((item, idx) => <div 
                 key={idx}
                 className="flex">
