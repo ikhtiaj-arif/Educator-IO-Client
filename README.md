@@ -25,3 +25,14 @@ THE WEBSITE FEACHERS & FUNCTIONALITY:
  3. FlowBite
  4. 22Tailwind
  5. Most of the styling is done manually 
+
+HOSTING: 
+Website : FireBase
+Server : vercel
+
+
+### Live Links:
+## Website : https://educatorio.web.app/
+## Server : https://assignment-10-server-gamma.vercel.app/
+
+
