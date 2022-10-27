@@ -4,12 +4,15 @@ import { useLoaderData, Link } from "react-router-dom";
 import Pdf from "react-to-pdf";
 import { FaRegHandPointRight } from "react-icons/fa";
 import { toast } from "react-hot-toast";
+import { useContext } from "react";
+import { AuthContext } from "../../Context/UserContext";
 
 const ref = React.createRef();
 
 const CourseDetails = () => {
+  const {user} = useContext(AuthContext)
   const details = useLoaderData();
-  console.log(details);
+  
   const {
 
     cover,
@@ -24,7 +27,11 @@ const CourseDetails = () => {
   } = details;
 
   const notify =()=> { 
-   toast.success('Congratulations ! Premium Access Granted!')
+  if(user && user.uid) {
+    toast.success('Congratulations ! Premium Access Granted!')
+  }else{
+    toast.error('You Must Sign In To Get Premium Access!')
+  }
   }
 
   return (

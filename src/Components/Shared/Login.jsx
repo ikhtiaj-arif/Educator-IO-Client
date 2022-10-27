@@ -4,10 +4,16 @@ import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
 
-
 const Login = () => {
-  const { user, logInUser, setUser, googleLogIn, githubLogIn, logOutUser } =
-    useContext(AuthContext);
+  const {
+    user,
+    setLoading,
+    logInUser,
+    setUser,
+    googleLogIn,
+    githubLogIn,
+    logOutUser,
+  } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
@@ -28,6 +34,9 @@ const Login = () => {
       })
       .catch((e) => {
         toast.error(e.message);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
@@ -60,8 +69,9 @@ const Login = () => {
   };
 
   return (
-    <div className="w-full mx-auto px-6 py-4 mt-6 overflow-hidden bg-gray-500 shadow-md sm:max-w-lg sm:rounded-lg">
-      <form onSubmit={handleSubmit} action="" className="">
+    
+    <div className="w-full h-screen mx-auto  mt-6 overflow-hidden shadow-md sm:max-w-lg sm:rounded-lg">
+      <form onSubmit={handleSubmit} action="" className="bg-gray-500 py-4 px-6 ">
         <div className="mt-4">
           <div className="flex flex-col items-start">
             <input
@@ -87,19 +97,24 @@ const Login = () => {
             type="submit"
             className="text-white w-full justify-center mt-3 bg-[#1da1f2] hover:bg-[#1da1f2]/90 focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium rounded-lg text-lg px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1da1f2]/55 mr-2 mb-2"
           >
-         
-           
-           Log In
+            Log In
           </button>
         </div>
       </form>
-      <Link href="#" className="text-xs text-purple-400 hover:underline">
+      <div className="bg-gray-500 py-4 px-6 rounded-b-lg">
+      <Link
+        href="#"
+        className="text-md text-violet-800 font-medium hover:underline"
+      >
         Forget Password?
       </Link>
       <div className="mt-4 text-grey-600">
         Don't Have An Account?{" "}
         <span>
-          <Link className="text-purple-900 hover:underline" to="/register">
+          <Link
+            className="text-violet-800 font-medium hover:underline"
+            to="/register"
+          >
             Register Now!
           </Link>
         </span>
@@ -129,7 +144,7 @@ const Login = () => {
             className="text-white w-full justify-center bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2"
           >
             <svg
-              class="mr-2 -ml-1 w-4 h-4"
+              className="mr-2 -ml-1 w-4 h-4"
               aria-hidden="true"
               focusable="false"
               data-prefix="fab"
@@ -151,7 +166,7 @@ const Login = () => {
             className="text-white w-full justify-center bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 mr-2 mb-2"
           >
             <svg
-              class="mr-2 -ml-1 w-4 h-4"
+              className="mr-2 -ml-1 w-4 h-4"
               aria-hidden="true"
               focusable="false"
               data-prefix="fab"
@@ -169,6 +184,7 @@ const Login = () => {
           </button>
         </div>
       )}
+      </div>
     </div>
   );
 };

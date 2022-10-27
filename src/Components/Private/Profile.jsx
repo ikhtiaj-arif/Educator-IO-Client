@@ -1,42 +1,43 @@
 import React from "react";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/UserContext";
 
 const Profile = () => {
-  const { user,  updateUserProfile, updateUserPassword, } = useContext(AuthContext);
-  const { displayName, email, photoURL, emailVerified } = user;
- 
+  const { user, setLoading, updateUserProfile, updateUserPassword } =
+    useContext(AuthContext);
+  const { displayName,  email, photoURL, emailVerified } = user;
+
   const handleUpdate = (event) => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
     const photo = form.photoURL.value;
-    const password = form.password.value;
-    
-    handleNamePhoto(name, photo);
-    handlePasswordUpdate(password);
-    toast.success("Profile Successfully Updated ! ");
-    form.reset();
 
-  }
-
-  const handleNamePhoto = (name, photo) => {
-    const profile = {displayName: name, photoURL: photo};
+    const profile = { displayName: name, photoURL: photo };
     updateUserProfile(profile)
-    .then( ()=> {
-
-    })
-    .catch(e=>toast.error(e.message))
-  }
-
-  const handlePasswordUpdate = (newPass) => {
-    updateUserPassword(newPass)
     .then(() => {
-    
+      toast.success("Profile Successfully Updated ! ");
+      form.reset()
     })
-    .e(e => toast.error(e.message))
+    .catch((e) => toast.error(e.message))
+    .finally( () => {
+      setLoading(false)
+    })
+   
+   
+  };
+
+
+  const handleReset = (email) => {
+    updateUserPassword(email)
+    .then( ()=>{
+      toast.success('Reset Link Sent To Your Email !')
+    })
+    .catch(e => toast.error(e.message))
+   
   }
+
 
   return (
     <div>
@@ -99,6 +100,7 @@ const Profile = () => {
                   name="name"
                   placeholder="Set Name"
                   className="block w-full p-3  rounded-md shadow-sm text-gray-700"
+                  required
                 />
               </div>
 
@@ -109,25 +111,24 @@ const Profile = () => {
                     name="photoURL"
                     placeholder="Set New Photo URL"
                     className="block w-full p-3  rounded-md shadow-sm text-gray-700"
+                    required
                   />
                 </div>
               </div>
 
-              <div className="mt-4">
-                <div className="flex flex-col items-start">
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="Set New Password"
-                    className="block w-full mt-1 p-3 text-gray-600 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                  />
-                </div>
-              </div>
+             
               <button
                 type="submit"
                 className="mt-4 text-white w-full justify-center bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-3 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2"
               >
-                Update 
+                Update
+              </button>
+              <button
+              onClick={()=>handleReset(email)}
+                type="button"
+                className="mt-4 text-white w-full justify-center bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-3 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2"
+              >
+                Reset Password With Email
               </button>
             </form>
           </div>
