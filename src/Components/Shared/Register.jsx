@@ -108,7 +108,7 @@ const Register = () => {
           </button>
         </div>
       ) : (
-        <div className="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 bg-base-100">
+        <div className="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 ">
           <div>
             <a href="/">
               <h3 className="text-5xl font-bold text-secondary">
@@ -116,7 +116,7 @@ const Register = () => {
               </h3>
             </a>
           </div>
-          <div className="w-full p-8  mt-6 overflow-hidden bg-gray-500 shadow-md sm:max-w-lg sm:rounded-lg">
+          <div className="w-full p-8  mt-8 overflow-hidden bg-gray-900 shadow-md sm:max-w-lg sm:rounded-lg">
             <form onSubmit={handleSubmit}>
               <div className="flex flex-col items-start">
                 <input
