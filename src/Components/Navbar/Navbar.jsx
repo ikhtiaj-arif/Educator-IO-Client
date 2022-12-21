@@ -8,6 +8,8 @@ import { useContext } from "react";
 import { AuthContext } from "../../Context/UserContext";
 import { FaSun, FaMoon } from "react-icons/fa";
 import "./Navbar.css";
+import ActionBtn2 from "../Buttons/ActionBtn2";
+import ActionOutline from "../Buttons/ActionOutline";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -43,7 +45,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-center">
         <ul
-          className={`md:flex py-8 md:py-0 bg-gray-200 md:bg-base-100 text-gray-600 text-lg md:text-gray-100 font-semibold absolute md:static left-0 md:pl-0 pl-9 w-full md:w-auto transition-all duration-500 ease-in z-10  ${
+          className={`md:flex items-center py-8 md:py-0 bg-gray-900 md:bg-base-100 text-gray-300 text-lg md:text-gray-100 font-semibold absolute md:static left-0 md:pl-0 pl-9 w-full md:w-auto transition-all duration-500 ease-in z-10  ${
             open ? "top-16" : "top-[-600px]"
           }`}
         >
@@ -51,19 +53,22 @@ const Navbar = () => {
             <Link to="/">Home</Link>
           </li>
           <li className="p-3 ">
-            <NavLink to="/courses/0">Courses</NavLink>
+            <a href="#courses">Courses</a>
           </li>
           <li className="p-3 ">
-            <NavLink to="/f-a-q">F A Q</NavLink>
+            <a href="#about">About</a>
+          </li>
+          <li className="p-3 ">
+            <a href="#f-a-q">F A Q</a>
+          </li>
+          <li className="p-3 ">
+            <a href="#teachers">Teachers</a>
           </li>
           <li className="p-3 ">
             <NavLink to="/blogs">Blogs</NavLink>
           </li>
-        </ul>
-      </div>
+          <li>
 
-      <div className="navbar-end">
-        <div>
           <Link to="/profile">
             {/* conditional check user to get user data */}
             <>
@@ -76,27 +81,41 @@ const Navbar = () => {
                         src={user.photoURL}
                         alt=""
                       />
-                      <div className="absolute text-white top-0 left-0 opacity-0 hover:opacity-100 transition duration-300 ease-in-out">
+                      <div className="absolute text-gray-800 top-0 left-0 opacity-0 hover:opacity-100 transition duration-300 ease-in-out">
                         {user.displayName}
                       </div>
                     </div>
                   ) : (
                     <FaUserTie className="w-10 text-xl rounded-full"></FaUserTie>
                   )}
-                  <button
-                    className="btn btn-outline btn-secondary mx-2"
+                  <div className="w-2/4">
+
+                  <ActionOutline
+                    
                     onClick={handleLogOut}
-                  >
-                    Logout
-                  </button>
+                    title='Logout'
+                    />
+                    </div>
+                    
+                 
                 </div>
               ) : (
-                <button className="btn btn-outline btn-secondary mx-2 ">
-                  Login
-                </button>
+                <div className="w-2/4 lg:w-full">
+
+                <ActionOutline title='  Login' />
+                
+                </div>
               )}
             </>
           </Link>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div className="navbar-end">
+        <div>
+        
         </div>
         {/* dark mode toggle button */}
         <div className="">

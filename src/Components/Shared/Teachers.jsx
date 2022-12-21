@@ -3,8 +3,8 @@ import React from 'react';
 const Teachers = () => {
     return (
        
-        <div className=' mt-24'>
-            <div className='text-center my-20'>
+        <div id='teachers' className=' mt-24'>
+            <div className='text-center p-10 '>
             <h1 className="text-5xl font-bold leading-none sm:text-4xl">We Provide <span className="text-accent">{" "}The Best Teachers{" "}</span><br/>
 			From All Around The Globe.
 			</h1>

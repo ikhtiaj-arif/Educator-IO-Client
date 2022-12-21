@@ -92,7 +92,7 @@ const Login = () => {
   return (
     
     <div className="w-full h-screen mx-auto  mt-6 overflow-hidden shadow-md sm:max-w-lg sm:rounded-lg">
-      <form onSubmit={handleSubmit} action="" className="bg-gray-500 py-4 px-6 ">
+      <form onSubmit={handleSubmit} action="" className="bg-gray-900 py-4 px-6 ">
         <div className="mt-4">
           <div className="flex flex-col items-start">
             <input
@@ -126,7 +126,7 @@ const Login = () => {
         
         </div>
       </form>
-      <div className="bg-gray-500 py-4 px-6 rounded-b-lg">
+      <div className="bg-gray-900 py-4 px-6 rounded-b-lg">
       <button
       onClick={() =>handleForgotPassword(email)}
         href="#"

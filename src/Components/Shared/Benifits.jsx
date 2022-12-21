@@ -1,83 +1,79 @@
-import React from 'react';
-import { FaRegHandPointRight, FaCartPlus } from "react-icons/fa";
+import React from "react";
+import {
 
-
+  FaHive,
+  FaCodiepie,
+  FaFortAwesome,
+  FaIntercom,
+  FaPerbyte,
+  FaAmbulance,
+  FaBorderAll,
+  FaChartArea,
+  FaCoins,
+} from "react-icons/fa";
 
 const Benifits = () => {
-    
-const category = [
+  const category = [
     {
-        title: 'xxx',
-        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, reprehenderit',
-        icon: <FaRegHandPointRight/>
-        
+      title: "RTL Ready",
+      text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, reprehenderit",
+      icon: <FaIntercom />,
     },
     {
-        title: 'xxx',
-        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, reprehenderit',
-        icon: <FaCartPlus/>
-        
+      title: "SEO Ready",
+      text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, reprehenderit",
+      icon: <FaPerbyte />,
     },
     {
-        title: 'xxx',
-        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, reprehenderit',
-        icon: <FaRegHandPointRight/>
-        
+      title: "Multilanguage",
+      text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, reprehenderit",
+      icon: <FaHive />,
     },
     {
-        title: 'xxx',
-        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, reprehenderit',
-        icon: <FaCartPlus/>
-        
+      title: "Revolution Slider",
+      text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, reprehenderit",
+      icon: <FaCodiepie />,
     },
     {
-        title: 'xxx',
-        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, reprehenderit',
-        icon: <FaCartPlus/>
-        
+      title: "100% Speed",
+      text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, reprehenderit",
+      icon: <FaCoins />,
     },
     {
-        title: 'xxx',
-        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, reprehenderit',
-        icon: <FaCartPlus/>
-        
+      title: "Live Customizer",
+      text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, reprehenderit",
+      icon: <FaChartArea />,
     },
     {
-        title: 'xxx',
-        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, reprehenderit',
-        icon: <FaCartPlus/>
-        
+      title: "Save Your Time",
+      text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, reprehenderit",
+      icon: <FaFortAwesome />,
     },
     {
-        title: 'xxx',
-        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, reprehenderit',
-        icon: <FaCartPlus/>
-        
+      title: "Wp Bakery Builder",
+      text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, reprehenderit",
+      icon: <FaAmbulance />,
     },
     {
-        title: 'xxx',
-        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, reprehenderit',
-        icon: <FaCartPlus/>
-        
+      title: "Revolution Slider",
+      text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, reprehenderit",
+      icon: <FaBorderAll />,
     },
-]
+  ];
 
-
-    return (
-        
-   <div className='w-3/4 mx-auto grid md:grid-cols-3'>
-    {
-        category.map((item, ix)=>  <div key={ix} className='flex p-4'>
-        <div className=' text-3xl pt-4 px-4'>{item.icon}</div>
-        <div>
-            <h1 className='text-2xl font-bold py-3'>{item.title}</h1>
+  return (
+    <div className="mx-10 grid md:grid-cols-3">
+      {category.map((item, ix) => (
+        <div key={ix} className="flex p-4">
+          <div className=" text-3xl pt-4 px-4">{item.icon}</div>
+          <div>
+            <h1 className="text-2xl font-bold py-3">{item.title}</h1>
             <p>{item.text}</p>
+          </div>
         </div>
-    </div>)
-    }
-        
-   </div>
-    );
+      ))}
+    </div>
+  );
 };
 
 export default Benifits;

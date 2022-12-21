@@ -2,6 +2,9 @@ import React from "react";
 import toast from "react-hot-toast";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/UserContext";
+import ActionBtn2 from "../Buttons/ActionBtn2";
+import { FaBeer } from 'react-icons/fa';
+import ActionBtn from "../Buttons/ActionBtn";
 
 const Profile = () => {
   const { user, setLoading, updateUserProfile, updateUserPassword } =
@@ -40,9 +43,9 @@ const Profile = () => {
 
 
   return (
-    <div>
-      <div className="max-w-lg h-screen mx-auto p-8 sm:flex sm:space-x-6 dark:bg-gray-900 dark:text-gray-100">
-        <div className="flex-shrink-0 w-full mb-6 h-44 sm:h-32 sm:w-32 sm:mb-0">
+    <div className="md:w-3/4 mx-auto">
+      <div className=" h-screen p-8 sm:flex justify-center sm:space-x-6 dark:bg-gray-900 dark:text-gray-100">
+        <div className="flex-shrink-0 w-full mb-6 h-44 sm:h-96 sm:w-96 sm:mb-0">
           <img
             src={photoURL}
             alt=""
@@ -117,19 +120,20 @@ const Profile = () => {
               </div>
 
              
-              <button
+              <ActionBtn2
                 type="submit"
-                className="mt-4 text-white w-full justify-center bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-3 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2"
+                title=" Update"
+                icon=  '<FaBeer/>'
               >
-                Update
-              </button>
-              <button
+             
+              </ActionBtn2>
+              <ActionBtn
               onClick={()=>handleReset(email)}
                 type="button"
-                className="mt-4 text-white w-full justify-center bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-3 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2"
+                title="Reset Password With Email"
               >
-                Reset Password With Email
-              </button>
+                
+              </ActionBtn>
             </form>
           </div>
         </div>
