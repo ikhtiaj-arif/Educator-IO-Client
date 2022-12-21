@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
+import ActionBtn from "../Buttons/ActionBtn";
 
 const Register = () => {
   const [checked, setChecked] = useState(false);
@@ -94,7 +95,7 @@ const Register = () => {
   };
 
   return (
-    <div>
+    <div className="">
       {user && user?.uid ? (
         <div className="md:w-3/4 mx-auto">
           <p>Please Log Out If You Want To Create A New Account</p>
@@ -110,12 +111,12 @@ const Register = () => {
         <div className="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 bg-base-100">
           <div>
             <a href="/">
-              <h3 className="text-5xl font-bold text-cyan-500">
+              <h3 className="text-5xl font-bold text-secondary">
                 Create A New Account
               </h3>
             </a>
           </div>
-          <div className="w-full px-6 py-4 mt-6 overflow-hidden bg-gray-500 shadow-md sm:max-w-lg sm:rounded-lg">
+          <div className="w-full p-8  mt-6 overflow-hidden bg-gray-500 shadow-md sm:max-w-lg sm:rounded-lg">
             <form onSubmit={handleSubmit}>
               <div className="flex flex-col items-start">
                 <input
@@ -171,12 +172,12 @@ const Register = () => {
                 <input
                   onClick={handleCheckBox}
                   type="checkbox"
-                  className="checkbox checkbox-accent"
+                  className="checkbox checkbox-primary"
                 />
-                <p className="mx-3 text-white">
-                  Accept Out{" "}
+                <p className="mx-3 font-medium text-white">
+                  Accept Our{" "}
                   <Link to="/terms">
-                    <span className=" text-violet-800 font font-medium hover:underline">
+                    <span className=" text-secondary font font-medium hover:underline">
                       Terms & Condition's
                     </span>
                   </Link>
@@ -184,19 +185,19 @@ const Register = () => {
               </div>
 
               <div className="flex items-center mt-4">
-                <button
+                <ActionBtn
                   type="submit"
-                  className="text-white w-full justify-center mt-3 bg-[#1da1f2] hover:bg-[#1da1f2]/90 focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium rounded-lg text-lg px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1da1f2]/55 mr-2 mb-2 disabled:opacity-50"
+                 title='Register' 
                   disabled={!checked}
                 >
-                 Register
-                </button>
+              
+                </ActionBtn>
               </div>
             </form>
-            <div className="mt-4 text-gray-200">
+            <div className="mb-4 font-medium text-gray-200">
               Already have an account?{" "}
               <span>
-                <Link className="text-violet-800 font-medium hover:underline" to="/login">
+                <Link className="text-secondary  font-medium hover:underline" to="/login">
                   Log in
                 </Link>
               </span>

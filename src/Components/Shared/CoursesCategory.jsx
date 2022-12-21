@@ -1,5 +1,6 @@
 import React from "react";
 import { useLoaderData, Link } from "react-router-dom";
+import ActionBtn from "../Buttons/ActionBtn";
 
 const CoursesCategory = () => {
   const topics = useLoaderData();
@@ -21,7 +22,7 @@ const CoursesCategory = () => {
               
             </div>
             <Link className="w-full" to={`/courseDetails/${e._id}`}>
-                <button className="btn bg-violet-400 text-white hover:bg-violet-500 w-full">Learn More</button>
+                <ActionBtn title="Learn More"></ActionBtn>
               </Link>
           </div>
         </div>

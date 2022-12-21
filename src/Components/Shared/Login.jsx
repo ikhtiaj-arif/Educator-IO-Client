@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
 import { useState } from "react";
+import ActionBtn from "../Buttons/ActionBtn";
 
 const Login = () => {
   const {
@@ -99,6 +100,7 @@ const Login = () => {
               type="email"
               name="email"
               placeholder="Email"
+              required
               className="block w-full p-3  rounded-md shadow-sm text-gray-700"
             />
           </div>
@@ -109,24 +111,26 @@ const Login = () => {
               type="password"
               name="password"
               placeholder="Password"
+              required
               className="block w-full mt-1 p-3 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             />
           </div>
         </div>
         <div>
-          <button
-            type="submit"
-            className="text-white w-full justify-center mt-3 bg-[#1da1f2] hover:bg-[#1da1f2]/90 focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium rounded-lg text-lg px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1da1f2]/55 mr-2 mb-2"
-          >
-            Log In
-          </button>
+          <ActionBtn
+          type="submit"
+          title="  Log In"
+          />
+
+          
+        
         </div>
       </form>
       <div className="bg-gray-500 py-4 px-6 rounded-b-lg">
       <button
       onClick={() =>handleForgotPassword(email)}
         href="#"
-        className="text-md text-violet-800 font-medium hover:underline"
+        className="text-md text-secondary font-medium hover:underline"
       >
         Forget Password?
       </button>
@@ -134,7 +138,7 @@ const Login = () => {
         Don't Have An Account?{" "}
         <span>
           <Link
-            className="text-violet-800 font-medium hover:underline"
+            className="text-secondary  font-medium hover:underline"
             to="/register"
           >
             Register Now!
@@ -149,7 +153,7 @@ const Login = () => {
 
       {user && user?.uid ? (
         <div>
-          <p>You Are Already Logged In, LogOut Before Continuing!</p>
+          <p className="font-medium">You Are Already Logged In, LogOut Before Continuing!</p>
 
           <button
             className="btn btn-outline btn-secondary mx-2"
@@ -163,7 +167,7 @@ const Login = () => {
           <button
             onClick={handleGoogleLogin}
             type="button"
-            className="text-white w-full justify-center bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2"
+            className="text-white w-full justify-center bg-[#4285F4] hover:bg-[#4285F4]/80 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2"
           >
             <svg
               className="mr-2 -ml-1 w-4 h-4"
