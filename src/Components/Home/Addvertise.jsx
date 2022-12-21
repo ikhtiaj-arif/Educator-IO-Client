@@ -3,7 +3,7 @@ import ActionOutline from "../Buttons/ActionOutline";
 
 const Addvertise = () => {
   return (
-    <div className="p-10 md:px-24 w-3/4 mx-auto mt-[-89px] py-14 rounded-xl bg-base-100   shadow-[#4012596f] shadow-lg">
+    <div className="p-10 md:px-24 w-3/4 mx-auto mt-[-89px] py-14 rounded-xl bg-[#2928289f]   shadow-[#4012596f] shadow-lg">
       <div className="container mx-auto">
       <div className="flex flex-col lg:flex-row items-center justify-between">
 		

@@ -22,10 +22,10 @@ const CourcesContainer = () => {
         {courses.map((e) => (
           <div key={e.id} className=" mx-10 ">
             <NavLink to={`/courses/${e.id}`} className="p-3">
-          
+
               <div className=" p-6 rounded-md bg-[#00000027] shadow-[#4012596f] shadow-lg dark:text-gray-50">
                 <img
-                  src="https://source.unsplash.com/random/300x300/?1"
+                  src={e.img}
                   alt=""
                   className="object-cover object-center w-full rounded-md h-72 dark:bg-gray-500"
                 />
