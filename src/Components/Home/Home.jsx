@@ -3,9 +3,12 @@ import { Link } from 'react-router-dom';
 import ActionBtn from "../Buttons/ActionBtn";
 import ActionOutline from "../Buttons/ActionOutline";
 import About from "../Shared/About";
+import Benifits from "../Shared/Benifits";
 import CourcesContainer from "../Shared/CourcesContainer";
 import CourseDetails from "../Shared/CourseDetails";
 import Courses from "../Shared/Courses";
+import Faq from "../Shared/Faq";
+import Teachers from "../Shared/Teachers";
 import Addvertise from "./Addvertise";
 
 
@@ -36,6 +39,9 @@ const Home = () => {
 <Addvertise/>
 <CourcesContainer/>
 <About/>
+<Teachers/>
+<Benifits/>
+<Faq/>
     </>
   );
 };
